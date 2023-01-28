@@ -1,52 +1,119 @@
-<header></header>
 <div class="container">
-  <aside>
-    <a routerLink="/dashboard" routerLinkActive="active">
+  <aside #menu>
+    <div class="top">
+      <a class="logo" routerLink="/dashboard" (click)="closeMenu()">
+        <img src="assets/mini_logo.png" alt="" />
+      </a>
+      <div id="close-btn">
+        <span class="material-icons-sharp" (click)="closeMenu()">close</span>
+      </div>
+    </div>
+
+    <a
+      routerLink="/dashboard"
+      routerLinkActive="active"
+      data-tooltip="Dashboard"
+      (click)="closeMenu()"
+    >
       <span class="material-icons-sharp">dashboard</span>
       <h3>Dashboard</h3>
     </a>
 
-    <a routerLink="/cadastros" routerLinkActive="active">
+    <a
+      routerLink="/cadastros"
+      routerLinkActive="active"
+      data-tooltip="Cadastros"
+      (click)="closeMenu()"
+    >
       <span class="material-icons-sharp">person_outline</span>
       <h3>Cadastros</h3>
     </a>
 
-    <a routerLink="/ordens" routerLinkActive="active">
+    <a
+      routerLink="/ordens-de-servico"
+      routerLinkActive="active"
+      data-tooltip="Ordens de Serviço"
+      (click)="closeMenu()"
+    >
       <span class="material-icons-sharp">receipt_long</span>
-      <h3>Orders</h3>
+      <h3>Ordens de Serviço</h3>
     </a>
 
-    <a routerLink="/nota-fiscal" routerLinkActive="active">
+    <a
+      routerLink="/nota-fiscal"
+      routerLinkActive="active"
+      data-tooltip="NFS-e"
+      (click)="closeMenu()"
+    >
       <span class="material-icons-sharp">description</span>
       <h3>NFS-e</h3>
     </a>
 
-    <a routerLink="/chat" routerLinkActive="active">
+    <a
+      routerLink="/chat"
+      routerLinkActive="active"
+      data-tooltip="Chat"
+      (click)="closeMenu()"
+    >
       <span class="material-icons-sharp">chat_bubble_outline</span>
       <h3>Chat</h3>
     </a>
 
-    <a routerLink="/produtos" routerLinkActive="active">
+    <a
+      routerLink="/produtos"
+      routerLinkActive="active"
+      data-tooltip="Produtos"
+      (click)="closeMenu()"
+    >
       <span class="material-icons-sharp">inventory</span>
       <h3>Produtos</h3>
     </a>
 
-    <a routerLink="/analytics" routerLinkActive="active">
+    <a
+      routerLink="/graficos"
+      routerLinkActive="active"
+      data-tooltip="Gráficos"
+      (click)="closeMenu()"
+    >
       <span class="material-icons-sharp">insights</span>
-      <h3>Analytics</h3>
+      <h3>Gráficos</h3>
     </a>
 
-    <a routerLink="/financeiro" routerLinkActive="active">
+    <a
+      routerLink="/financeiro"
+      routerLinkActive="active"
+      data-tooltip="Financeiro"
+      (click)="closeMenu()"
+    >
       <span class="material-icons-sharp">account_balance_wallet</span>
       <h3>Financeiro</h3>
     </a>
 
-    <a routerLink="/relatorios" routerLinkActive="active">
+    <a
+      routerLink="/relatorios"
+      routerLinkActive="active"
+      data-tooltip="Relatórios"
+      (click)="closeMenu()"
+    >
       <span class="material-icons-sharp">newspaper</span>
       <h3>Relatórios</h3>
     </a>
   </aside>
-  <div>
-    <router-outlet></router-outlet>
-  </div>
+  <div #outArea id="out-area-menu" (click)="closeMenu()"></div>
+  <section>
+    <header>
+      <div class="top">
+        <button id="menu-btn" (click)="openMenu()">
+          <span class="material-icons-sharp">menu</span>
+        </button>
+        <div class="theme-toggler" (click)="toggleTheme()">
+          <span class="material-icons-sharp active" #light>light_mode</span>
+          <span class="material-icons-sharp" #dark>dark_mode</span>
+        </div>
+      </div>
+    </header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </section>
 </div>
