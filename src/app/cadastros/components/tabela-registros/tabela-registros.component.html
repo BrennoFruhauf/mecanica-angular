@@ -1,0 +1,27 @@
+<table>
+  <thead>
+    <tr>
+      <th>Tipo</th>
+      <th>Nome</th>
+      <th>CPF</th>
+      <th>E-mail</th>
+      <th>Contato</th>
+      <th>Cidade</th>
+      <th>UF</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let person of persons | async">
+      <td></td>
+      <td>{{ person.name }}</td>
+      <td>{{ person.cpf }}</td>
+      <td>{{ person.email }}</td>
+      <td>{{ person.phone }}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
