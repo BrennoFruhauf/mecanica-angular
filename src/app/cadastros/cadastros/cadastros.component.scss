@@ -1,0 +1,80 @@
+@import "/src/variables";
+
+.header-register {
+  display: flex;
+  justify-content: space-around;
+  gap: 1vw;
+  user-select: none;
+}
+
+.new {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  color: var(--color-white);
+  border-radius: $border-radius-1;
+  background: var(--color-primary);
+  box-shadow: var(--box-shadow);
+  transition: background 300ms linear;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--color-secondary);
+  }
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  max-width: 50rem;
+  box-shadow: var(--box-shadow);
+
+  input {
+    padding: 0.8rem 1rem;
+    background: var(--color-white);
+    color: var(--color-dark);
+    border-radius: 0.4rem 0 0 0.4rem;
+    flex-grow: 1;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.2rem 0.5rem 0.7rem;
+    border-radius: 0 0.4rem 0.4rem 0;
+    background: var(--color-dark);
+    color: var(--color-white);
+    font-weight: 500;
+    cursor: pointer;
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+}
+
+.excel {
+  display: flex;
+  align-items: center;
+
+  button {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1.2rem;
+    border-radius: $border-radius-1;
+    color: var(--color-white);
+    background: var(--color-excel);
+    transition: background 300ms ease;
+    box-shadow: var(--box-shadow);
+    gap: 0.5rem;
+    cursor: pointer;
+
+    &:hover {
+      background: #0fc78a;
+    }
+  }
+}

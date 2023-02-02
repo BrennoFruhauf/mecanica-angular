@@ -1,2 +1,29 @@
-<p>cadastros works!</p>
+<div class="header-register">
+  <button class="new" (click)="onAdd()">
+    <span class="material-icons-sharp">add_circle</span> Novo Cadastro
+  </button>
+
+  <div class="search">
+    <input
+      type="text"
+      name=""
+      id="search"
+      autocomplete="off"
+      placeholder="Buscar pelo nome, placa, CPF, modelo..."
+    />
+    <button><span class="material-icons-sharp">search</span> Pesquisar</button>
+  </div>
+
+  <div class="excel">
+    <button>
+      <span class="material-icons-sharp">table_view</span> Exportar para Excel
+    </button>
+  </div>
+
+  <div>
+    <h3>Total</h3>
+    <p>300 Cliente(s)</p>
+  </div>
+</div>
+
 <app-tabela-registros></app-tabela-registros>

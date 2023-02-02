@@ -1,0 +1,562 @@
+<!-- <div class="container">
+  <form [formGroup]="form">
+    <h2>Tipo de Cadastro</h2>
+    <div class="tipo-cadastro">
+      <label for="cliente" class="radio">
+        <input
+          type="radio"
+          name="type"
+          id="cliente"
+          value="cliente"
+          formControlName="type"
+          required
+        />
+        <span></span>
+        Cliente
+      </label>
+
+      <label for="mecanico" class="radio">
+        <input
+          type="radio"
+          name="type"
+          id="mecanico"
+          value="mecanico"
+          formControlName="type"
+        />
+        <span></span>
+        Mecânico
+      </label>
+
+      <label for="admin" class="radio">
+        <input
+          type="radio"
+          name="type"
+          id="admin"
+          value="admin"
+          formControlName="type"
+        />
+        <span></span>
+        Administrador
+      </label>
+    </div>
+
+    <h2>Dados Pessoais</h2>
+
+    <div class="row-1">
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="Nome Completo"
+          name="name"
+          formControlName="name"
+          id="name"
+          size="50"
+          required
+          autocomplete="off"
+        />
+        <label for="name" class="input-label">Nome Completo *</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="CPF"
+          name="cpf"
+          formControlName="cpf"
+          id="cpf"
+          required
+          autocomplete="off"
+          mask="000.000.000-00"
+        />
+        <label for="cpf" class="input-label">CPF *</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="Telefone"
+          name="phone"
+          formControlName="phone"
+          id="phone"
+          required
+          autocomplete="off"
+          mask="(00) 0 0000 0000"
+        />
+        <label for="phone" class="input-label">Telefone *</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="email"
+          class="input-field"
+          placeholder="E-mail"
+          name="email"
+          formControlName="email"
+          id="email"
+          autocomplete="off"
+        />
+        <label for="email" class="input-label">E-mail</label>
+      </div>
+    </div>
+
+    <h2>Endereço</h2>
+
+    <div class="row-2">
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="CEP"
+          name="cep"
+          formControlName="cep"
+          id="cep"
+          autocomplete="off"
+          mask="00000-000"
+        />
+        <label for="cep" class="input-label">CEP</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="Logradouro"
+          name="street"
+          formControlName="street"
+          id="street"
+          autocomplete="off"
+        />
+        <label for="street" class="input-label">Logradouro</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="N°"
+          name="number"
+          formControlName="number"
+          id="number"
+          autocomplete="off"
+        />
+        <label for="number" class="input-label">N°</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="Complemento"
+          name="complement"
+          formControlName="complement"
+          id="complement"
+          autocomplete="off"
+        />
+        <label for="complement" class="input-label">Complemento</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="Bairro"
+          name="district"
+          formControlName="district"
+          id="district"
+          autocomplete="off"
+        />
+        <label for="district" class="input-label">Bairro</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="Cidade"
+          name="city"
+          formControlName="city"
+          id="city"
+          autocomplete="off"
+        />
+        <label for="city" class="input-label">Cidade</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="UF"
+          name="state"
+          formControlName="state"
+          id="state"
+          autocomplete="off"
+          mask="SS"
+        />
+        <label for="state" class="input-label">UF</label>
+      </div>
+    </div>
+
+    <h2>Veículo</h2>
+
+    <div class="row-3">
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="Placa"
+          name="board"
+          formControlName="board"
+          id="board"
+          required
+          autocomplete="off"
+          mask="SSS-0A00"
+        />
+        <label for="board" class="input-label">Placa *</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="Marca"
+          name="brand"
+          formControlName="brand"
+          id="brand"
+          required
+          autocomplete="off"
+        />
+        <label for="brand" class="input-label">Marca *</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="Modelo"
+          name="model"
+          formControlName="model"
+          id="model"
+          required
+          autocomplete="off"
+        />
+        <label for="model" class="input-label">Modelo *</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="Cor"
+          name="color"
+          formControlName="color"
+          id="color"
+          required
+          autocomplete="off"
+        />
+        <label for="color" class="input-label">Cor *</label>
+      </div>
+    </div>
+
+    <button type="button" id="adicionar-veiculo">Adicionar Veículo</button>
+    <button type="submit" (click)="enviar()">Enviar</button>
+  </form>
+</div> -->
+
+<div class="container">
+  <form [formGroup]="registerForm">
+    <h2>Tipo de Cadastro</h2>
+    <div class="tipo-cadastro">
+      <label for="cliente" class="radio">
+        <input
+          type="radio"
+          name="type"
+          id="cliente"
+          value="cliente"
+          formControlName="type"
+          required
+        />
+        <span></span>
+        Cliente
+      </label>
+
+      <label for="mecanico" class="radio">
+        <input
+          type="radio"
+          name="type"
+          id="mecanico"
+          value="mecanico"
+          formControlName="type"
+        />
+        <span></span>
+        Mecânico
+      </label>
+
+      <label for="admin" class="radio">
+        <input
+          type="radio"
+          name="type"
+          id="admin"
+          value="admin"
+          formControlName="type"
+        />
+        <span></span>
+        Administrador
+      </label>
+    </div>
+
+    <h2>Dados Pessoais</h2>
+
+    <div class="row-1">
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field uppercase"
+          placeholder="Nome Completo"
+          name="name"
+          formControlName="name"
+          id="name"
+          size="50"
+          required
+          autocomplete="off"
+        />
+        <label for="name" class="input-label">Nome Completo *</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="CPF"
+          name="cpf"
+          formControlName="cpf"
+          id="cpf"
+          required
+          autocomplete="off"
+          mask="000.000.000-00"
+        />
+        <label for="cpf" class="input-label">CPF *</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="Telefone"
+          name="phone"
+          formControlName="phone"
+          id="phone"
+          required
+          autocomplete="off"
+          mask="(00) 0 0000 0000"
+        />
+        <label for="phone" class="input-label">Telefone *</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="email"
+          class="input-field lowercase"
+          placeholder="E-mail"
+          name="email"
+          formControlName="email"
+          id="email"
+          autocomplete="off"
+        />
+        <label for="email" class="input-label">E-mail</label>
+      </div>
+    </div>
+
+    <h2>Endereço</h2>
+
+    <div class="row-2" formGroupName="address">
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="CEP"
+          name="cep"
+          formControlName="cep"
+          id="cep"
+          autocomplete="off"
+          mask="00000-000"
+        />
+        <label for="cep" class="input-label">CEP</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field uppercase"
+          placeholder="Logradouro"
+          name="street"
+          formControlName="street"
+          id="street"
+          autocomplete="off"
+        />
+        <label for="street" class="input-label">Logradouro</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="N°"
+          name="number"
+          formControlName="number"
+          id="number"
+          autocomplete="off"
+        />
+        <label for="number" class="input-label">N°</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field uppercase"
+          placeholder="Complemento"
+          name="complement"
+          formControlName="complement"
+          id="complement"
+          autocomplete="off"
+        />
+        <label for="complement" class="input-label">Complemento</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field uppercase"
+          placeholder="Bairro"
+          name="district"
+          formControlName="district"
+          id="district"
+          autocomplete="off"
+        />
+        <label for="district" class="input-label">Bairro</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field uppercase"
+          placeholder="Cidade"
+          name="city"
+          formControlName="city"
+          id="city"
+          autocomplete="off"
+        />
+        <label for="city" class="input-label">Cidade</label>
+      </div>
+
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field uppercase"
+          placeholder="UF"
+          name="state"
+          formControlName="state"
+          id="state"
+          autocomplete="off"
+          mask="SS"
+        />
+        <label for="state" class="input-label">UF</label>
+      </div>
+    </div>
+
+    <h2>Veículos</h2>
+    <ng-container
+      formArrayName="vehicles"
+      *ngFor="let vehicle of vehicles.controls; index as i"
+    >
+      <div [formGroupName]="i">
+        <div class="row-3">
+          <div class="form-group field">
+            <input
+              type="text"
+              class="input-field uppercase"
+              placeholder="Placa"
+              name="board"
+              formControlName="board"
+              id="board{{ i }}"
+              required
+              autocomplete="off"
+              mask="SSS-0A00"
+            />
+            <label for="board{{ i }}" class="input-label">Placa *</label>
+          </div>
+
+          <div class="form-group field">
+            <input
+              type="text"
+              class="input-field uppercase"
+              placeholder="Marca"
+              name="brand"
+              formControlName="brand"
+              id="brand{{ i }}"
+              required
+              autocomplete="off"
+            />
+            <label for="brand{{ i }}" class="input-label">Marca *</label>
+          </div>
+
+          <div class="form-group field">
+            <input
+              type="text"
+              class="input-field uppercase"
+              placeholder="Modelo"
+              name="model"
+              formControlName="model"
+              id="model{{ i }}"
+              required
+              autocomplete="off"
+            />
+            <label for="model{{ i }}" class="input-label">Modelo *</label>
+          </div>
+
+          <div class="form-group field">
+            <input
+              type="text"
+              class="input-field uppercase"
+              placeholder="Cor"
+              name="color"
+              formControlName="color"
+              id="color{{ i }}"
+              required
+              autocomplete="off"
+            />
+            <label for="color{{ i }}" class="input-label">Cor *</label>
+          </div>
+          <button type="button" class="form-btn cancel" (click)="onRemove(i)">
+            <span>Remover</span>
+          </button>
+        </div>
+      </div>
+    </ng-container>
+    <div class="end-form">
+      <button
+        type="button"
+        class="form-btn add-car"
+        id="add-vehicle"
+        (click)="addVehicle()"
+      >
+        Adicionar Veículo
+      </button>
+      <div class="form-action">
+        <button
+          type="submit"
+          [disabled]="disabled"
+          class="form-btn register"
+          (click)="onRegister()"
+        >
+          Cadastrar
+        </button>
+        <button type="button" class="form-btn cancel" (click)="onCancel()">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

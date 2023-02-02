@@ -23,16 +23,35 @@ table {
 
     tr {
       span {
+        user-select: none;
+        cursor: pointer;
+
         &:nth-child(1) {
-          color: var(--color-success);
+          color: var(--color-dark);
+
+          &:hover {
+            color: var(--color-success);
+          }
         }
 
         &:nth-child(2) {
-          color: var(--color-warning);
+          color: var(--color-dark);
+
+          &:hover {
+            color: var(--color-warning);
+          }
         }
 
         &:nth-child(3) {
-          color: var(--color-danger);
+          color: var(--color-dark);
+
+          &:hover {
+            color: var(--color-danger);
+          }
+        }
+
+        &:hover {
+          filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.438));
         }
       }
 

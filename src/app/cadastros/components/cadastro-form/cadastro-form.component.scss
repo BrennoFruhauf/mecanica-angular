@@ -1,0 +1,258 @@
+@import "/src/variables";
+
+.container {
+  // max-width: 1200px;
+  font-size: 1rem;
+  margin-inline: auto;
+  user-select: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  padding: 3rem 2rem;
+  box-shadow: 1px 5px 10px 1px var(--color-light);
+  border-radius: 1rem;
+
+  > :last-child {
+    margin-top: 2rem;
+  }
+}
+
+.tipo-cadastro {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: space-evenly;
+}
+
+.radio {
+  margin-right: 1rem;
+  padding-left: 1.75rem;
+  position: relative;
+  cursor: pointer;
+
+  input[type="radio"] {
+    position: absolute;
+    visibility: hidden;
+
+    &:focus ~ span {
+      border: 2px solid lighten(black, 50%);
+    }
+
+    &:focus:checked ~ span {
+      border: 2px solid darken(#f75d3b, 15%);
+    }
+
+    &:checked ~ span {
+      color: white;
+      background: var(--color-primary)
+        url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8c3ZnIHdpZHRoPSIxMiIgaGVpZ2h0PSI5IiB2aWV3Qm94PSIwIDAgMTIgOSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCiAgPHBhdGggZD0iTTQuNTc1IDguOTc3cy0uNDA0LS4wMDctLjUzNi0uMTY1TC4wNTcgNS42NGwuODI5LTEuMjI3TDQuNDcgNy4yNjggMTAuOTIxLjA4NmwuOTIzIDEuMTAzLTYuODYzIDcuNjRjLS4xMzQtLjAwMy0uNDA2LjE0OC0uNDA2LjE0OHoiIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPg0KPC9zdmc+)
+        50% 40% no-repeat;
+      border: 2px solid var(--color-primary);
+    }
+  }
+
+  span {
+    border-radius: 3px;
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 1rem;
+    height: 1rem;
+    background-color: lighten(black, 65%);
+    border: 2px solid lighten(black, 65%);
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+.form-group {
+  position: relative;
+  padding: 15px 0 0;
+}
+
+.input-field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid var(--color-dark);
+  outline: 0;
+  font-size: 1.3rem;
+  color: var(--color-dark);
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+  &:required,
+  &:invalid {
+    box-shadow: none;
+    // background-color: #f75d3b;
+  }
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .input-label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+
+  &:focus {
+    padding-bottom: 6px;
+    border-width: 3px;
+    border-image: linear-gradient(
+      to right,
+      var(--color-primary),
+      var(--color-primary-variant)
+    );
+    border-image-slice: 1;
+
+    ~ .input-label {
+      position: absolute;
+      top: 0;
+      display: block;
+      transition: 0.2s;
+      font-size: 1rem;
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+  }
+}
+
+.input-label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: var(--color-dark);
+}
+
+.row-1,
+.row-2,
+.row-3 {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2rem;
+  row-gap: 1rem;
+}
+
+.row-1 {
+  > :nth-child(1) {
+    flex: 3 1 250px;
+  }
+
+  > :nth-child(2) {
+    flex: 1 1 150px;
+  }
+
+  > :nth-child(3) {
+    flex: 1 1 150px;
+  }
+
+  > :nth-child(4) {
+    flex: 2 1 250px;
+  }
+}
+
+.row-2 {
+  > :nth-child(1) {
+    flex: 1 1 100px;
+  }
+
+  > :nth-child(2) {
+    flex: 3 1 250px;
+  }
+
+  > :nth-child(3) {
+    flex: 1 1 50px;
+  }
+
+  > :nth-child(4) {
+    flex: 1 1 150px;
+  }
+
+  > :nth-child(5) {
+    flex: 1 1 150px;
+  }
+
+  > :nth-child(6) {
+    flex: 1 1 150px;
+  }
+
+  > :nth-child(7) {
+    flex: 1 1 50px;
+  }
+}
+
+.row-3 {
+  > :nth-child(1) {
+    flex: 1 1 100px;
+  }
+
+  > :nth-child(2) {
+    flex: 1 1 150px;
+  }
+
+  > :nth-child(3) {
+    flex: 2 1 200px;
+  }
+
+  > :nth-child(4) {
+    flex: 1 1 100px;
+  }
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.end-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  gap: 2rem;
+
+  div {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    gap: 2rem;
+  }
+}
+
+.add-car {
+  background-color: #f75d3b;
+
+  &:hover {
+    background-color: #f0431c;
+  }
+}
+
+.cancel {
+  background-color: #f73b44;
+  display: flex;
+  align-self: center;
+
+  &:hover {
+    background-color: #e2222c;
+  }
+}
+
+.register {
+  background-color: #1ed379;
+
+  &:hover {
+    background-color: #0da358;
+  }
+}

@@ -6,6 +6,7 @@
       <th>CPF</th>
       <th>E-mail</th>
       <th>Contato</th>
+      <th>Veículo(s)</th>
       <th>Cidade</th>
       <th>UF</th>
       <th>Ações</th>
@@ -14,14 +15,19 @@
 
   <tbody>
     <tr *ngFor="let person of persons | async">
-      <td></td>
+      <td>Mecânico</td>
       <td>{{ person.name }}</td>
       <td>{{ person.cpf }}</td>
       <td>{{ person.email }}</td>
       <td>{{ person.phone }}</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>2</td>
+      <td>Catalão</td>
+      <td>GO</td>
+      <td>
+        <span class="material-icons-sharp">visibility</span>
+        <span class="material-icons-sharp">edit</span>
+        <span class="material-icons-sharp">delete</span>
+      </td>
     </tr>
   </tbody>
 </table>

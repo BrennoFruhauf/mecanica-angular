@@ -23,10 +23,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    console.log(this.light);
-    console.log(this.menu);
-    console.log(this.outArea);
-
     this.browserWidth = window.innerWidth;
     this.theme = localStorage.getItem('theme');
 
