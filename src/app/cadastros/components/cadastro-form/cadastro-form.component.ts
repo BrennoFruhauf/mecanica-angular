@@ -29,14 +29,14 @@ export class CadastroFormComponent {
       cpf: [null, [Validators.required]],
       phone: [null, [Validators.required]],
       email: [null, [Validators.email]],
-      // address: this.addressForm(),
-      cep: [null],
-      street: [null],
-      addressNumber: [null],
-      complement: [null],
-      district: [null],
-      city: [null],
-      state: [null],
+      address: this.addressForm(),
+      // cep: [null],
+      // street: [null],
+      // addressNumber: [null],
+      // complement: [null],
+      // district: [null],
+      // city: [null],
+      // state: [null],
       vehicles: this.formBuilder.array([this.vehicleForm()]),
     });
 
@@ -48,7 +48,9 @@ export class CadastroFormComponent {
   }
 
   getCep() {
-    const cep: string = this.registerForm.get('cep')?.value;
+    // const cep1: string = this.registerForm.get('cep')?.value;
+    const cep: any = this.registerForm.get('address')?.get('cep')?.value;
+    console.log(cep);
 
     if (cep.length > 0) {
       this.resetAddressForm();
@@ -60,39 +62,43 @@ export class CadastroFormComponent {
 
   fillAddressForm(data: AddressAPI) {
     this.registerForm.patchValue({
-      cep: data.cep,
-      street: data.street,
-      district: data.neighborhood,
-      city: data.city,
-      state: data.state,
+      address: {
+        cep: data.cep,
+        street: data.street,
+        district: data.neighborhood,
+        city: data.city,
+        state: data.state,
+      },
     });
   }
 
   resetAddressForm() {
     this.registerForm.patchValue({
-      cep: '',
-      street: '',
-      district: '',
-      city: '',
-      state: '',
+      address: {
+        cep: '',
+        street: '',
+        district: '',
+        city: '',
+        state: '',
+      },
     });
   }
 
-  // addressForm() {
-  //   return this.formBuilder.group({
-  //     cep: [null],
-  //     street: [null],
-  //     number: [null],
-  //     complement: [null],
-  //     district: [null],
-  //     city: [null],
-  //     state: [null],
-  //   });
-  // }
+  addressForm() {
+    return this.formBuilder.group({
+      cep: [null],
+      street: [null],
+      addressNumber: [null],
+      complement: [null],
+      district: [null],
+      city: [null],
+      state: [null],
+    });
+  }
 
-  // get address(): FormGroup {
-  //   return this.registerForm.get('address') as FormGroup;
-  // }
+  get address(): FormGroup {
+    return this.registerForm.get('address') as FormGroup;
+  }
 
   vehicleForm(): FormGroup {
     return this.formBuilder.group({
