@@ -1,4 +1,5 @@
 import { Vehicle } from './vehicle';
+import { Address } from './address';
 
 export interface Person {
   personId: string;
@@ -6,12 +7,6 @@ export interface Person {
   cpf: string;
   email: string;
   phone: string;
-  cep: string;
-  street: string;
-  addressNumber: string;
-  complement: string;
-  district: string;
-  city: string;
-  state: string;
+  address: Address;
   vehicle: Vehicle[];
 }
