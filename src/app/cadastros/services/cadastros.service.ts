@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Person } from '../model/person';
 import { Observable, first, tap } from 'rxjs';
+import { Address } from '../model/address';
 
 @Injectable({
   providedIn: 'root',
@@ -18,5 +19,9 @@ export class CadastrosService {
 
   save(record: Person) {
     return this.http.post<Person>(this.API, record).pipe(first());
+  }
+
+  clientCount() {
+    return this.http.get<number>(`${this.API}/clientes`).pipe(first());
   }
 }

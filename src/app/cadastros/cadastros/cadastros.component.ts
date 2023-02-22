@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CadastrosService } from '../services/cadastros.service';
 
 @Component({
   selector: 'app-cadastros',
@@ -7,7 +8,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./cadastros.component.scss'],
 })
 export class CadastrosComponent {
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  clientCount: number = 0;
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private cadastroService: CadastrosService
+  ) {
+    cadastroService
+      .clientCount()
+      .subscribe((count) => (this.clientCount = count));
+  }
 
   onAdd() {
     this.router.navigate(['new'], { relativeTo: this.route });
