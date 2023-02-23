@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Person } from '../model/person';
-import { Observable, first, tap } from 'rxjs';
-import { Address } from '../model/address';
+import { first } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

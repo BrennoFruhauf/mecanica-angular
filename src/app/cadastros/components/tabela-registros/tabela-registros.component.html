@@ -15,14 +15,14 @@
 
   <tbody>
     <tr *ngFor="let person of persons | async">
-      <td>Mecânico</td>
+      <td>{{ person.personRole }}</td>
       <td>{{ person.name }}</td>
       <td>{{ person.cpf | mask : "000.000.000-00" }}</td>
       <td>{{ person.email }}</td>
       <td>{{ person.phone | mask : "(00) 0 0000 0000" }}</td>
-      <td>{{ person?.vehicle?.length }}</td>
-      <td>{{ person?.address?.city }}</td>
-      <td>{{ person?.address?.state }}</td>
+      <td>{{ person.vehicles?.length }}</td>
+      <td>{{ person.address?.city }}</td>
+      <td>{{ person.address?.state }}</td>
       <td>
         <span class="material-icons-sharp">visibility</span>
         <span class="material-icons-sharp">edit</span>

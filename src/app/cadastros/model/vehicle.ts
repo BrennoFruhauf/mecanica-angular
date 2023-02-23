@@ -3,5 +3,6 @@ export interface Vehicle {
   board: string;
   brand: string;
   model: string;
+  year: number;
   color: string;
 }
