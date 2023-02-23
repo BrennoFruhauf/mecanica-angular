@@ -5,10 +5,10 @@
       <label for="cliente" class="radio">
         <input
           type="radio"
-          name="type"
+          name="personRole"
           id="cliente"
-          value="cliente"
-          formControlName="type"
+          value="CLIENT"
+          formControlName="personRole"
           required
         />
         <span></span>
@@ -18,10 +18,10 @@
       <label for="mecanico" class="radio">
         <input
           type="radio"
-          name="type"
+          name="personRole"
           id="mecanico"
-          value="mecanico"
-          formControlName="type"
+          value="MECHANIC"
+          formControlName="personRole"
         />
         <span></span>
         Mecânico
@@ -30,10 +30,10 @@
       <label for="admin" class="radio">
         <input
           type="radio"
-          name="type"
+          name="personRole"
           id="admin"
-          value="admin"
-          formControlName="type"
+          value="ADMIN"
+          formControlName="personRole"
         />
         <span></span>
         Administrador
@@ -69,6 +69,7 @@
           required
           autocomplete="off"
           mask="000.000.000-00"
+          [clearIfNotMatch]="true"
         />
         <label for="cpf" class="input-label">CPF *</label>
       </div>
@@ -84,6 +85,7 @@
           required
           autocomplete="off"
           mask="(00) 0 0000 0000"
+          [clearIfNotMatch]="true"
         />
         <label for="phone" class="input-label">Telefone *</label>
       </div>
@@ -116,6 +118,7 @@
           (blur)="getCep()"
           autocomplete="off"
           mask="00000-000"
+          [clearIfNotMatch]="true"
         />
         <label for="cep" class="input-label">CEP</label>
       </div>
@@ -142,6 +145,7 @@
           formControlName="addressNumber"
           id="number"
           autocomplete="off"
+          mask="0||00||000||0000||00000||000000"
         />
         <label for="number" class="input-label">N°</label>
       </div>
@@ -215,9 +219,11 @@
               name="board"
               formControlName="board"
               id="board{{ i }}"
+              (blur)="getVehicle(i)"
               required
               autocomplete="off"
               mask="SSS-0A00"
+              [clearIfNotMatch]="true"
             />
             <label for="board{{ i }}" class="input-label">Placa *</label>
           </div>
@@ -248,6 +254,20 @@
               autocomplete="off"
             />
             <label for="model{{ i }}" class="input-label">Modelo *</label>
+          </div>
+
+          <div class="form-group field">
+            <input
+              type="text"
+              class="input-field uppercase"
+              placeholder="Ano"
+              name="year"
+              formControlName="year"
+              id="year{{ i }}"
+              required
+              autocomplete="off"
+            />
+            <label for="year{{ i }}" class="input-label">Ano *</label>
           </div>
 
           <div class="form-group field">
