@@ -8,7 +8,6 @@ import { AddressAPI } from './interface/addressAPI';
 import { VehicleAPI } from './interface/vehicleAPI';
 import { Person } from '../../model/person';
 import { CnpjAPI } from './interface/cnpjAPI';
-import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-cadastro-form',
@@ -75,28 +74,36 @@ export class CadastroFormComponent {
   getCep() {
     const cep: string = this.registerForm.get('address')?.get('cep')?.value;
 
-    this.resetAddressForm();
-
     if (cep.length === 8) {
-      this.registerService.getAddress(cep).subscribe((result) => {
-        console.log(result);
-        this.fillAddressForm(result);
+      this.registerService.getAddress(cep).subscribe({
+        next: (next) => this.fillAddressForm(next),
+        error: (err) => this.resetAddressForm(),
       });
     }
   }
 
   getDocument() {
     const number: string = this.registerForm.get('registerNumber')?.value;
-    // const cpf: number = 11;
+    const cpf: number = 11;
     const cnpj: number = 14;
 
     if (number.length === cnpj) {
-      this.registerService.getCNPJ(number).subscribe((result) => {
-        this.fillCNPJ(result);
-        this.registerService
-          .getAddress(result.cep)
-          .subscribe((res) => this.fillAddressForm(res));
+      this.registerService.getCNPJ(number).subscribe({
+        next: (result) => {
+          this.fillCNPJ(result);
+          this.registerService.getAddress(result.cep).subscribe({
+            next: (res) => this.fillAddressForm(res),
+            error: (err) => this.resetAddressForm(),
+          });
+        },
+        error: (err) => {
+          this.resetBasicData();
+          this.resetAddressForm();
+        },
       });
+    } else if (number.length != cpf) {
+      this.resetBasicData();
+      this.resetAddressForm();
     }
   }
 
@@ -161,6 +168,7 @@ export class CadastroFormComponent {
   resetAddressForm() {
     this.registerForm.patchValue({
       address: {
+        cep: '',
         street: '',
         addressNumber: '',
         complement: '',
@@ -178,6 +186,14 @@ export class CadastroFormComponent {
       model: '',
       year: '',
       color: '',
+    });
+  }
+
+  resetBasicData() {
+    this.registerForm.patchValue({
+      registerNumber: '',
+      name: '',
+      email: '',
     });
   }
 

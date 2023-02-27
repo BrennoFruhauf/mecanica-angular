@@ -18,11 +18,7 @@ export class RegisterService {
   constructor(private http: HttpClient) {}
 
   getAddress(cep: string) {
-    return this.http.get<AddressAPI>(`${API_ADDRESS_PATH}${cep}`).pipe(
-      catchError((error) => {
-        return of();
-      })
-    );
+    return this.http.get<AddressAPI>(`${API_ADDRESS_PATH}${cep}`);
   }
 
   getVehicle(board: string) {
@@ -32,8 +28,6 @@ export class RegisterService {
   }
 
   getCNPJ(cnpj: string) {
-    return this.http
-      .get<CnpjAPI>(`${API_CNPJ_PATH}${cnpj}`)
-      .pipe(catchError((error) => of()));
+    return this.http.get<CnpjAPI>(`${API_CNPJ_PATH}${cnpj}`);
   }
 }
