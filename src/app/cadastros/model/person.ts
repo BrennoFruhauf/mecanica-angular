@@ -5,7 +5,7 @@ export interface Person {
   personId: string;
   personRole: string;
   name: string;
-  cpf: string;
+  registerNumber: string;
   email: string;
   phone: string;
   address?: Address;

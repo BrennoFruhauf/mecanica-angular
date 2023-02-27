@@ -15,4 +15,9 @@ export class TabelaRegistrosComponent {
   constructor(private cadastrosService: CadastrosService) {
     this.persons = this.cadastrosService.listAll();
   }
+
+  maskPhone(number: string): string {
+    if (number.length == 11) return '(00) 0 0000 0000';
+    else return '(00) 0000 0000';
+  }
 }

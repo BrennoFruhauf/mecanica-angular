@@ -40,9 +40,26 @@
       </label>
     </div>
 
-    <h2>Dados Pessoais</h2>
+    <h2>Dados Básicos</h2>
 
     <div class="row-1">
+      <div class="form-group field">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="CPF/CNPJ"
+          name="register_number"
+          formControlName="registerNumber"
+          id="register_number"
+          required
+          (blur)="getDocument()"
+          autocomplete="off"
+          mask="000.000.000-00||00.000.000/0000-00"
+          [clearIfNotMatch]="true"
+        />
+        <label for="register_number" class="input-label">CPF/CNPJ *</label>
+      </div>
+
       <div class="form-group field">
         <input
           type="text"
@@ -62,29 +79,13 @@
         <input
           type="text"
           class="input-field"
-          placeholder="CPF"
-          name="cpf"
-          formControlName="cpf"
-          id="cpf"
-          required
-          autocomplete="off"
-          mask="000.000.000-00"
-          [clearIfNotMatch]="true"
-        />
-        <label for="cpf" class="input-label">CPF *</label>
-      </div>
-
-      <div class="form-group field">
-        <input
-          type="text"
-          class="input-field"
           placeholder="Telefone"
           name="phone"
           formControlName="phone"
           id="phone"
           required
           autocomplete="off"
-          mask="(00) 0 0000 0000"
+          mask="(00) 0000 0000||(00) 0 0000 0000"
           [clearIfNotMatch]="true"
         />
         <label for="phone" class="input-label">Telefone *</label>

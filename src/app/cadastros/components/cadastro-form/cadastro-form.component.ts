@@ -3,12 +3,12 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { CadastrosService } from '../../services/cadastros.service';
+import { RegisterService } from './service/register.service';
 import { AddressAPI } from './interface/addressAPI';
-import { AddressService } from './service/address.service';
-import { Person } from '../../model/person';
-import { Vehicle } from '../../model/vehicle';
-import { VehicleService } from './service/vehicle.service';
 import { VehicleAPI } from './interface/vehicleAPI';
+import { Person } from '../../model/person';
+import { CnpjAPI } from './interface/cnpjAPI';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-cadastro-form',
@@ -21,15 +21,14 @@ export class CadastroFormComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private addressService: AddressService,
-    private vehicleService: VehicleService,
+    private registerService: RegisterService,
     private cadastrosService: CadastrosService,
     private location: Location
   ) {
     this.registerForm = this.formBuilder.group({
       personRole: ['CLIENT', [Validators.required]],
       name: [null, [Validators.required]],
-      cpf: [null, [Validators.required]],
+      registerNumber: [null, [Validators.required]],
       phone: [null, [Validators.required]],
       email: [null, [Validators.email]],
       address: this.addressForm(),
@@ -75,24 +74,44 @@ export class CadastroFormComponent {
 
   getCep() {
     const cep: string = this.registerForm.get('address')?.get('cep')?.value;
-    if (cep != null) {
-      if (cep.length === 8) {
-        this.addressService
-          .getAddress(cep)
-          .subscribe((result) => this.fillAddressForm(result));
-      }
+
+    this.resetAddressForm();
+
+    if (cep.length === 8) {
+      this.registerService.getAddress(cep).subscribe((result) => {
+        console.log(result);
+        this.fillAddressForm(result);
+      });
+    }
+  }
+
+  getDocument() {
+    const number: string = this.registerForm.get('registerNumber')?.value;
+    // const cpf: number = 11;
+    const cnpj: number = 14;
+
+    if (number.length === cnpj) {
+      this.registerService.getCNPJ(number).subscribe((result) => {
+        this.fillCNPJ(result);
+        this.registerService
+          .getAddress(result.cep)
+          .subscribe((res) => this.fillAddressForm(res));
+      });
     }
   }
 
   getVehicle(index: number) {
+    console.log(this.registerForm.getRawValue());
     const board: string = this.registerForm
       .get(`vehicles`)
       ?.get(`${index}`)
       ?.get('board')?.value;
 
+    this.resetVehicleForm(index);
+
     if (board != null) {
       if (board.length === 7) {
-        this.vehicleService
+        this.registerService
           .getVehicle(board)
           .subscribe((res) => this.fillVehicleForm(res, index));
       }
@@ -102,11 +121,11 @@ export class CadastroFormComponent {
   fillAddressForm(data: AddressAPI) {
     this.registerForm.patchValue({
       address: {
-        cep: data.cep,
-        street: data.street,
-        district: data.neighborhood,
-        city: data.city,
-        state: data.state,
+        cep: data.cep.toLowerCase(),
+        street: data.street.toLowerCase(),
+        district: data.neighborhood.toLowerCase(),
+        city: data.city.toLowerCase(),
+        state: data.state.toUpperCase(),
       },
     });
   }
@@ -116,15 +135,32 @@ export class CadastroFormComponent {
     return vehicle?.patchValue({
       brand: data.Marca,
       model: data.Modelo,
-      year: data.AnoModelo,
+      year: data.AnoModelo.slice(5),
       color: data.cor,
     });
+  }
+
+  fillCNPJ(data: CnpjAPI) {
+    this.registerForm.patchValue({
+      name: data.nome_fantasia,
+      phone: this.phoneValidation(data.ddd_telefone_1),
+      email: data.email,
+      address: {
+        cep: data.cep,
+        addressNumber: data.numero,
+        complement: data.complemento?.replace(';', ' '),
+      },
+    });
+  }
+
+  phoneValidation(phone: string) {
+    if (phone.length == 11 || phone.length == 10) return phone;
+    return null;
   }
 
   resetAddressForm() {
     this.registerForm.patchValue({
       address: {
-        cep: '',
         street: '',
         addressNumber: '',
         complement: '',
@@ -132,6 +168,16 @@ export class CadastroFormComponent {
         city: '',
         state: '',
       },
+    });
+  }
+
+  resetVehicleForm(index: number) {
+    const vehicle = this.registerForm.get(`vehicles`)?.get(`${index}`);
+    return vehicle?.patchValue({
+      brand: '',
+      model: '',
+      year: '',
+      color: '',
     });
   }
 

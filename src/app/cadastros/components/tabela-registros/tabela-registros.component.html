@@ -3,7 +3,7 @@
     <tr>
       <th>Tipo</th>
       <th>Nome</th>
-      <th>CPF</th>
+      <th>CPF/CNPJ</th>
       <th>E-mail</th>
       <th>Contato</th>
       <th>Veículo(s)</th>
@@ -17,12 +17,14 @@
     <tr *ngFor="let person of persons | async">
       <td>{{ person.personRole }}</td>
       <td>{{ person.name }}</td>
-      <td>{{ person.cpf | mask : "000.000.000-00" }}</td>
-      <td>{{ person.email }}</td>
-      <td>{{ person.phone | mask : "(00) 0 0000 0000" }}</td>
+      <td>
+        {{ person.registerNumber | mask : "CPF_CNPJ" }}
+      </td>
+      <td>{{ person.email != null ? person.email : "-" }}</td>
+      <td>{{ person.phone | mask : maskPhone(person.phone) }}</td>
       <td>{{ person.vehicles?.length }}</td>
-      <td>{{ person.address?.city }}</td>
-      <td>{{ person.address?.state }}</td>
+      <td>{{ person.address?.city != null ? person.address?.city : "-" }}</td>
+      <td>{{ person.address?.state != null ? person.address?.state : "-" }}</td>
       <td>
         <span class="material-icons-sharp">visibility</span>
         <span class="material-icons-sharp">edit</span>
